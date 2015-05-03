@@ -1,6 +1,6 @@
 {
   "name": "goodeggs-assets",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Shared runtime code to manage assets",
   "author": "Good Eggs <open-source@goodeggs.com>",
   "contributors": [
