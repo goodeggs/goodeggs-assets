@@ -26,7 +26,7 @@ describe 'goodeggs-assets', ->
   describe 'production (with manifest)', ->
 
     beforeEach ->
-      assets = GoodeggsAssets.build {'img/banana.gif': 'img/banana-55283dd8.gif'}
+      assets = GoodeggsAssets.build manifest: {'img/banana.gif': 'img/banana-55283dd8.gif'}
 
     describe 'assetPath', ->
 

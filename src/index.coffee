@@ -3,25 +3,30 @@ middleware = require './middleware'
 
 class GoodeggsAssets
 
-  @build: (manifest) ->
-    assets = new @ manifest
-    assets.middleware = middleware(assets)
+  @build: ({manifest, config}={}) ->
+    assets = new @ {manifest, config}
+    assets.middleware = ->
+      middleware(assets)
     assets
 
-  constructor: (@_manifest={}) ->
-    # noop
+  constructor: ({@manifest, @config}) ->
+    @manifest ?= {}
 
   assetPath: (absPath) ->
     relPath = absPath[1..]
-    if versionedPath = @_manifest[relPath]
+    if versionedPath = @manifest[relPath]
       "/#{versionedPath}"
     else
       absPath
 
-module.exports = GoodeggsAssets.build \
-  switch process.env.NODE_ENV
-    when 'production'
-      require(path.join(process.cwd(), 'build/rev-manifest.json'))
-    else
-      {}
+
+# set up our runtime singleton
+config = try require(path.join(process.cwd(), 'Assetfile'))
+manifest = switch process.env.NODE_ENV
+  when 'production'
+    require(path.join(process.cwd(), config.dest.manifest))
+  else
+    {}
+
+module.exports = GoodeggsAssets.build {config, manifest}
 

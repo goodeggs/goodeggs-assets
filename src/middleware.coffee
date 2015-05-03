@@ -9,7 +9,7 @@ module.exports = (assets) ->
     next()
   
   if process.env.NODE_ENV is 'production'
-    chain assetHelperMiddleware, serveStatic(path.join(process.cwd(), 'build/public'), maxAge: '365d')
+    chain assetHelperMiddleware, serveStatic(path.join(process.cwd(), assets.config.dest.prod), maxAge: '365d')
   else
-    chain assetHelperMiddleware, serveStatic(path.join(process.cwd(), 'public'))
+    chain assetHelperMiddleware, serveStatic(path.join(process.cwd(), assets.config.dest.dev))
 
