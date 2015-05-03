@@ -1,0 +1,36 @@
+{
+  "name": "goodeggs-assets",
+  "version": "1.0.0",
+  "description": "Shared runtime code to manage assets",
+  "author": "Good Eggs <open-source@goodeggs.com>",
+  "contributors": [
+    "Bob Zoller <bob@zoller.us>"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goodeggs/goodeggs-assets.git"
+  },
+  "homepage": "https://github.com/goodeggs/goodeggs-assets",
+  "bugs": "https://github.com/goodeggs/goodeggs-assets/issues",
+  "dependencies": {
+    "connect-chain": "0.0.1",
+    "serve-static": "^1.9.2"
+  },
+  "devDependencies": {
+    "coffee-script": ">=1.8.x",
+    "mocha": "~1.x.x",
+    "chai": "~1.x.x",
+    "mocha-sinon": "~1.x.x"
+  },
+  "scripts": {
+    "compile": "coffee --bare --compile --output lib/ src/",
+    "prepublish": "npm run compile",
+    "pretest": "npm run compile",
+    "test": "mocha"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
+  }
+}
