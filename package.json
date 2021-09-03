@@ -19,16 +19,17 @@
     "serve-static": "^1.9.2"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
     "coffee-script": ">=1.8.x",
-    "mocha": "~1.x.x",
-    "chai": "~1.x.x",
-    "mocha-sinon": "~1.x.x"
+    "mocha": "^9.1.1",
+    "mocha-sinon": "^2.1.2",
+    "sinon": "^11.1.2"
   },
   "scripts": {
     "compile": "coffee --bare --compile --output lib/ src/",
     "prepublish": "npm run compile",
     "pretest": "npm run compile",
-    "test": "mocha"
+    "test": "mocha --extension coffee --require coffee-script/register --reporter spec"
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org"
